@@ -43,6 +43,7 @@ struct Model {
     float *fluxRight;
     vec2 *velocity;
     bool *trees;
+    int viewX, viewY;
     GameMode currentGameMode = Strategic;
 
     void addHeight(int x, int y, float f) {
@@ -57,7 +58,7 @@ struct Model {
     }
 
     void generateMap();
-    void renderMap(View *view);
+    void renderMap(View *view, float slerp);
     void smoothHeights(int iterations, float *stencil, int stencilSize);
 };
 

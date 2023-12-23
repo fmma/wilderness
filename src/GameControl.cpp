@@ -9,7 +9,8 @@ double clockToMilliseconds(clock_t ticks){
 }
 
 GameControl::GameControl(View *view, Model *model, Keyboard *keyboard) : view(view), model(model), keyboard(keyboard) {
-
+    model->viewX = roundf(model->player.x)/2 - view->width / 2;
+    model->viewY = roundf(model->player.y) - view->height / 2;
 }
 
 int GameControl::mainLoop() {
@@ -19,16 +20,19 @@ int GameControl::mainLoop() {
     char buf[50];
     view->clear();
     bool showFps = 1;
+    float slerp = 0.0f;
 
     while(1) {
 
-        model->renderMap(view);
+        model->renderMap(view, slerp);
 
         if(showFps) {
             frames++;
             if(!(frames & 7)) {
                 t = time(NULL);
+                float dt = difftime(t, t0);
                 sprintf(buf, "FPS: %f", frames / difftime(t, t0));
+                slerp = dt;
             }
             view->writeString(0,0, buf);
         }
@@ -44,15 +48,15 @@ int GameControl::mainLoop() {
 void GameControl::handleKeys() {
     this->keyboard->pollKeys();
     if(keyboard->keyClicked(KEY_LEFT)) {
-        model->player.x--;
+        model->viewX--;
     }
     if(keyboard->keyClicked(KEY_RIGHT)) {
-        model->player.x++;
+        model->viewX++;
     }
     if(keyboard->keyClicked(KEY_UP)) {
-        model->player.y--;
+        model->viewY--;
     }
     if(keyboard->keyClicked(KEY_DOWN)) {
-        model->player.y++;
+        model->viewY++;
     }
 }

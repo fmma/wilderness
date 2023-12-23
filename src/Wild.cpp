@@ -35,9 +35,7 @@ class Wild {
 
 int main() {
 #ifdef GEN_STUFF
-    for(int i7 = 0; i7 < 2; ++i7)
     for(int i5 = 0; i5 < 2; ++i5)
-    for(int i2 = 0; i2 < 2; ++i2)
     for(int i0 = 0; i0 < 2; ++i0) 
     {
     printf("/*\n");
@@ -46,7 +44,7 @@ int main() {
     for(int i3 = 0; i3 < 2; ++i3)
     for(int i1 = 0; i1 < 2; ++i1)
     {
-        printf("  %d%d%d  ", i0, i1, i2);
+        printf("  %d%d%d%d  ", i1,i1,i3,i3);
     }
     printf("\n");
     for(int i6 = 0; i6 < 2; ++i6)
@@ -54,7 +52,7 @@ int main() {
     for(int i3 = 0; i3 < 2; ++i3)    
     for(int i1 = 0; i1 < 2; ++i1)
     {
-        printf("  %d %d  ", i3, i4);
+        printf(" %d%d11%d%d ", i0,i0,i5,i5);
     }
     printf("\n");
     
@@ -63,7 +61,7 @@ int main() {
     for(int i3 = 0; i3 < 2; ++i3)
     for(int i1 = 0; i1 < 2; ++i1)
     {
-        printf("  %d%d%d  ", i5, i6, i7);
+        printf("  %d%d%d%d  ", i4, i4, i6,i6);
     }
     printf("*/\n");
     for(int i6 = 0; i6 < 2; ++i6)
@@ -71,7 +69,7 @@ int main() {
     for(int i3 = 0; i3 < 2; ++i3)
     for(int i1 = 0; i1 < 2; ++i1)
     {
-        printf("  \"??\" ");
+        printf("  \"??\"  ");
     }
     printf("\n");
     }
